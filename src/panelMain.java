@@ -14,6 +14,12 @@ public class panelMain {
         System.out.println("width: "+panelMain.getWidth()+ " height: "+ panelMain.getHeight());
         mapDataGrass = Map.getMapDataGrass(panelMain);
         Map.fillPanelWithJLabels(mapDataGrass, "src/visualResources/grassTile.png", panelMain);
+
+        for (int i = 0; i < mapDataGrass.length ; i++) {
+            for (int j = 0; j < mapDataGrass[i].length ; j++) {
+                System.out.println(mapDataGrass[i][j]);
+            }
+        }
     }
 
     public static void main(String[] args) {
