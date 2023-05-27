@@ -20,16 +20,23 @@ public class Map {
 
     public static void fillPanelWithJLabels(int[][] mapData, String icon_filePath, JPanel panel, int Tilesize) {
 
-        int x = 0;
-        int y = 0;
+
+        fillPanel(mapData, icon_filePath, panel, Tilesize, 0, 0, 0);
+        fillPanel(mapData, icon_filePath, panel, Tilesize, 20, 20, 1);
 
 
+    }
+
+    public static void fillPanel(int[][] mapData, String icon_filePath, JPanel panel, int Tilesize, int startingPointRow, int startingPointCollumn, int index) {
+
+        int x = startingPointRow;
+        int y = startingPointCollumn;
         for (int row = 0; row < mapData.length; row++) {
 
             for (int col = 0; col < mapData[row].length; col++) {
                 if (col == 59) {
                     y = y + Tilesize;
-                    x = 0;
+                    x = startingPointRow;
                 }
                 if (mapData[row][col] == 1 || mapData[row][col] == 2) {
 
@@ -43,12 +50,12 @@ public class Map {
                         @Override
                         public void mouseClicked(MouseEvent e) {
 
-                         if(SwingUtilities.isRightMouseButton(e)) {
-                             ImageIcon imageCoin = new ImageIcon("src/visualResources/grassTileClicked.png");
-                             Icon icon_coin = new ImageIcon(imageCoin.getImage().getScaledInstance(labelToPlace.getWidth(), labelToPlace.getHeight(), Image.SCALE_DEFAULT));
-                             labelToPlace.setIcon(icon_coin);
-                             System.out.println(labelToPlace.getX());
-                         }
+                            if (SwingUtilities.isRightMouseButton(e)) {
+                                ImageIcon imageCoin = new ImageIcon("src/visualResources/grassTileClicked.png");
+                                Icon icon_coin = new ImageIcon(imageCoin.getImage().getScaledInstance(labelToPlace.getWidth(), labelToPlace.getHeight(), Image.SCALE_DEFAULT));
+                                labelToPlace.setIcon(icon_coin);
+                                System.out.println(labelToPlace.getX());
+                            }
                         }
 
                         @Override
@@ -73,18 +80,16 @@ public class Map {
                     });
 
                     x = x + 20;
-                    panel.add(labelToPlace);
+                    panel.add(labelToPlace, index);
 
                 }
 
             }
 
-
         }
-
     }
+}
 
-    }
 
 
 
